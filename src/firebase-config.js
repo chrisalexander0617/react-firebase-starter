@@ -1,5 +1,5 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "@firebase/firestore"
+import {initializeApp} from 'firebase/app'
+import {getFirestore} from '@firebase/firestore'
 // [optional] import { getAnalytics } from "firebase/analytics";
 
 // Replace the values with the configuration variables from your firebase account
@@ -17,7 +17,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase Connection
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig)
 
-// [optional] const analytics = getAnalytics(app);
+// [optional] const analytics = getAnalytics(app)
 export const db = getFirestore(app)

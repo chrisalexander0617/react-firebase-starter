@@ -27,3 +27,34 @@
 .App-link {
   color: #61dafb;
 }
+
+.Nav {
+  padding:1.5rem;
+  background-color:#F2F2F2;
+  position:fixed;
+  width:100%;
+  text-align:center;
+}
+
+.NavLink {
+  margin:1rem;
+  text-decoration:none;
+  color: #282c34;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.NavLink:hover {
+  color: #282c34ab;
+}
+
+.Content {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color: #282c34;
+  height:100vh;
+  width:100%;
+  flex-direction:column;
+  gap:0.12rem;
+}
