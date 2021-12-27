@@ -1,31 +1,37 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Content from '../molecules/Content'
-import { db } from '../firebase'
-import { collection, addDoc } from 'firebase/firestore'
-
-const getVehicles = async () => {
-const data = await getDocs(vehiclesRef)
-setVehicles(data.docs.map( doc => (
-                {
-                    ...doc.data(), 
-                    id:doc.id 
-                }
-            )
-        )
-    )
-}
+import { db } from '../../firebase-config'
+import { collection, getDocs } from 'firebase/firestore'
 
 function Example(){
-    const [yourDocs, loadYourDocs] = useState(null)
+    const isMounted = useRef(false)
+
+    const [vehicles, setVehicles] = useState([])
+    const vehiclesRef = collection(db, 'vehicles')
 
     useEffect(() => {
-        // [good practice] preventing memory leak
-        let mounted = false
+        isMounted.current = true
 
-        return () => { mounted = true }
+        const getVehicles = async () => {
+            const data = await getDocs(vehiclesRef)
+            setVehicles(data.docs.map( doc => (
+                        {
+                            ...doc.data(), 
+                            id:doc.id 
+                        }
+                    )
+                )
+            )
+        }
+
+        getVehicles()
+
+        console.log(vehicles)
+
+        return () => { isMounted.current = false }
     }, [])
 
-    return  <Content title="Example Queries" text="take a look" />
+return  <Content title="Example Queries" text="Check the console to see data" />
 }
 
 export default Example
