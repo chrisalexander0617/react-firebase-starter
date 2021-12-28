@@ -33,10 +33,10 @@ function Example(){
 
         getVehicles()
 
-        console.log(vehicles)
-
         return () => { isMounted = false }
     }, [])
+
+    console.log(vehicles)
 
     return  <Content title="Example Queries" text="Check the console to see data" />
 }
